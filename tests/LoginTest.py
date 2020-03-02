@@ -14,3 +14,5 @@ def test_login_to_jira():
     driver.find_element_by_id("login").submit()
 
     assert driver.page_source.find('Dashboard')
+
+    driver.close()
