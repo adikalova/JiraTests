@@ -1,10 +1,16 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+from tests.DriverFactory import DriverFactory
+
 
 class TestJira:
     def test_login_to_jira(self):
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driverFacrtory = DriverFactory()
+        driverFacrtory.create_driver()
+
+        driver = driverFacrtory.getDriver()
+
         driver.get('https://jira.hillel.it/secure/Dashboard.jspa')
         assert "System Dashboard" in driver.title
 
